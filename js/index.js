@@ -1,15 +1,16 @@
 // Variables
-const linksin = document.querySelectorAll('a');
+const links = document.querySelectorAll('a');
 let logoHeading = document.querySelector('.logo-heading');
-const linksout = document.querySelectorAll('a');
+// const out = document.querySelectorAll('a');
 let button1 = document.querySelectorAll('.destination .btn')[0]
 let button2 = document.querySelectorAll('.destination .btn')[1]
 let button3 = document.querySelectorAll('.destination .btn')[2]
+const formChange = document.getElementsByClassName('form');
 //================================Mouseovers&Clicks
 
 //1 Mouseover
-for (var i=0; i < linksin.length; i++) {
-    linksin[i].addEventListener('mouseover', (event) => {
+for (var i=0; i < links.length; i++) {
+    links[i].addEventListener('mouseover', (event) => {
         event.target.style.color = 'blue'
         // console.log("target:", event.target);
         });
@@ -20,8 +21,8 @@ logoHeading.addEventListener('mouseover', (event) => {
     event.target.style.cursor = 'pointer';
 })
 //2 Mouse Out
-for (var i=0; i < linksout.length; i++) {
-    linksout[i].addEventListener('mouseout', (event) => {
+for (var i=0; i < links.length; i++) {
+    links[i].addEventListener('mouseout', (event) => {
         event.target.style.color = 'black'
         // console.log("target:", event.target);
     });}
@@ -59,5 +60,10 @@ button3.addEventListener('mouseleave', (event) => {
 window.addEventListener('load', (event) => {
         alert("The Page Loaded");
 });
-
+//8 preventdefault
+for (var i=0; i < links.length; i++) {
+    links[i].addEventListener('click', (event) => {
+        event.preventDefault();
+        // console.log("target:", event.target);
+    });}
 
