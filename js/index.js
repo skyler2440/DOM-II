@@ -11,3 +11,7 @@ for (var i=0; i < linksout.length; i++) {
         event.target.style.color = 'black'
         // console.log("target:", event.target);
     });}
+
+window.addEventListener('load', (event) => {
+        alert("The Page Loaded");
+});
