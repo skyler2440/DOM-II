@@ -47,3 +47,49 @@ funBusImage.addEventListener('mouseup', (event) => {
     funBusImage.style.display = ''
     funBusImage.style.margin = ''
 })
+
+//preventdefault
+for (var i=0; i < aLinks.length; i++) {
+    aLinks[i].addEventListener('click', (event) => {
+        event.preventDefault();
+        // console.log("target:", event.target);
+    });}
+
+const navBar = document.querySelector('.nav-container');
+const checkBox = document.createElement('input');
+const label = document.createElement('label');
+
+checkBox.type = 'checkbox';
+checkBox.id = 'stopProp';
+
+
+label.htmlFor = 'stopProp';
+label.style.font = '16px roboto';
+label.style.marginRight = '-75px';
+
+label.appendChild(document.createTextNode('Stop Propogation'));
+navBar.append(label);
+navBar.append(checkBox);
+
+const intro = document.querySelector('.intro')
+const button = document.createElement('button')
+// button.type = 'submit';
+button.id = 'button'
+button.innerHTML = 'Click Me'
+button.style.display = 'block'
+button.style.margin = '1rem auto'
+
+intro.prepend(button)
+
+body = document.querySelector('body');
+body.addEventListener('click', (event) => {
+    alert('Check the Stop Propogation Box');
+    })
+    
+    button.addEventListener('click', (event) => {
+        alert('The propogation no longer reaches the body element when the stop propogation box is checked');
+        if (document.getElementById("stopProp").checked) {
+            event.stopPropagation();
+        }
+    })
+
