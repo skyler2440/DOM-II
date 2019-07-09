@@ -83,8 +83,9 @@ intro.prepend(button)
 
 body = document.querySelector('body');
 body.addEventListener('click', (event) => {
+    if (!document.getElementById("stopProp").checked) {
     alert('Check the Stop Propogation Box');
-    })
+    }})
     
     button.addEventListener('click', (event) => {
         alert('The propogation no longer reaches the body element when the stop propogation box is checked');
@@ -93,3 +94,7 @@ body.addEventListener('click', (event) => {
         }
     })
 
+TweenMax.to('.logo-heading' , 2, {x:650} )
+TweenMax.to('.logo-heading' , 2, {y:600, delay:3} )
+TweenMax.to('.logo-heading' , 2, {x:0, delay:6} )
+TweenMax.to('.logo-heading' , 2, {y:0, delay:9} )
