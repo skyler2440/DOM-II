@@ -35,3 +35,15 @@ button3.addEventListener('mouseover', (event) => {
 window.addEventListener('load', (event) => {
     alert("The Page Loaded");
 });
+
+const funBusImage = document.querySelector('.intro img');
+funBusImage.addEventListener('mousedown', (event) => {
+    funBusImage.style.width = '50%'
+    funBusImage.style.display = 'block'
+    funBusImage.style.margin = '0 auto'
+})
+funBusImage.addEventListener('mouseup', (event) => {
+    funBusImage.style.width = ''
+    funBusImage.style.display = ''
+    funBusImage.style.margin = ''
+})
