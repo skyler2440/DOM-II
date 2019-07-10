@@ -1,96 +1,100 @@
-// Variables
-const links = document.querySelectorAll('a');
-let logoHeading = document.querySelector('.logo-heading');
-// const out = document.querySelectorAll('a');
-let button1 = document.querySelectorAll('.destination .btn')[0]
-let button2 = document.querySelectorAll('.destination .btn')[1]
-let button3 = document.querySelectorAll('.destination .btn')[2]
-const textContentParagraph = document.querySelector('.text-content p');
-const textContent = document.querySelector('.text-content');
-const formChange = document.querySelector('input');
-//================================Mouseovers&Clicks
-
-//1 Mouseover
-for (var i=0; i < links.length; i++) {
-    links[i].addEventListener('mouseover', (event) => {
-        event.target.style.color = 'blue'
-        // console.log("target:", event.target);
-        });
+//MouseEnter MouseLeave
+var aLinks = document.querySelectorAll('a');
+var mouseEnters = function() { event.target.style.color = 'red' }
+var mouseLeaves = function() { event.target.style.color = '' }
+for (var i = aLinks.length - 1; i >= 0; --i) {
+    aLinks[i].onmouseenter = mouseEnters;
+    aLinks[i].onmouseleave = mouseLeaves;
 }
-//1.2
-logoHeading.addEventListener('mouseover', (event) => {
-    event.target.style.color = 'blue';
-    event.target.style.cursor = 'pointer';
-})
-//2 Mouse Out
-for (var i=0; i < links.length; i++) {
-    links[i].addEventListener('mouseout', (event) => {
-        event.target.style.color = 'black'
-        // console.log("target:", event.target);
-    });}
-//2.2
-logoHeading.addEventListener('mouseout', (event)=> {
-    event.target.style.color = 'black';
-})
-//3 Click
-logoHeading.addEventListener('click', (event) => {
-    event.stopPropagation();
-    alert('Thank for Visiting Fun Bus! Subscribe for Updates!');
 
-})
-//3.2
+//KeyDown KeyUp
+logoHeading = document.querySelector('.logo-heading');
+document.addEventListener('keydown', (event) => { logoHeading.textContent = 'Hello' });
+document.addEventListener('keyup', (event) => { logoHeading.textContent = 'Fun Bus' });
+
+
+const button1 = document.querySelectorAll('.destination .btn')[0]
+const button2 = document.querySelectorAll('.destination .btn')[1]
+const button3 = document.querySelectorAll('.destination .btn')[2]
+
 button1.addEventListener('click', (event) => {
     button1.style.background = 'purple'
     button1.innerHTML = 'Pop!'
 
 })
-// 3.3 stopprop
-textContent.addEventListener('click', (event) => {
-    alert('Text Content Alert');
-})
-
-textContentParagraph.addEventListener('click', (event) => {
-    event.stopPropagation();
-    alert('Paragraph Alert');
-});
-//4 Dblclick
 
 button2.addEventListener('dblclick', (event) => {
     button2.style.background = 'blue'
     button2.innerHTML = 'Double Click!'
 })
-//5 MouseEnter
-button3.addEventListener('mouseenter', (event) => {
+
+button3.addEventListener('mouseover', (event) => {
     button3.style.background = 'green'
     button3.innerHTML = 'Green Version'
 })
-
-//6 MouseLeave
-button3.addEventListener('mouseleave', (event) => {
-    button3.style.background = '#17A2B8'
-    button3.innerHTML = 'Sign Me Up!'
-
-})
-//========================================Global Functions
-//7 Window Alert
 window.addEventListener('load', (event) => {
-        alert("The Page Loaded");
+    alert("The Page Loaded");
 });
-//8 preventdefault
-for (var i=0; i < links.length; i++) {
-    links[i].addEventListener('click', (event) => {
+
+const funBusImage = document.querySelector('.intro img');
+funBusImage.addEventListener('mousedown', (event) => {
+    funBusImage.style.width = '50%'
+    funBusImage.style.display = 'block'
+    funBusImage.style.margin = '0 auto'
+})
+funBusImage.addEventListener('mouseup', (event) => {
+    funBusImage.style.width = ''
+    funBusImage.style.display = ''
+    funBusImage.style.margin = ''
+})
+
+//preventdefault
+for (var i=0; i < aLinks.length; i++) {
+    aLinks[i].addEventListener('click', (event) => {
         event.preventDefault();
         // console.log("target:", event.target);
     });}
 
+const navBar = document.querySelector('.nav-container');
+const checkBox = document.createElement('input');
+const label = document.createElement('label');
 
-//9 onfocus
+checkBox.type = 'checkbox';
+checkBox.id = 'stopProp';
 
-formChange.addEventListener('focus', (event) => {
-    event.target.style.background = 'pink';
-});
 
-//10 onblur
-formChange.addEventListener('blur', (event) => {
-    event.target.style.background = '';
-});
+label.htmlFor = 'stopProp';
+label.style.font = '16px roboto';
+label.style.marginRight = '-75px';
+
+label.appendChild(document.createTextNode('Stop Propogation'));
+navBar.append(label);
+navBar.append(checkBox);
+
+const intro = document.querySelector('.intro')
+const button = document.createElement('button')
+// button.type = 'submit';
+button.id = 'button'
+button.innerHTML = 'Click Me'
+button.style.display = 'block'
+button.style.margin = '1rem auto'
+
+intro.prepend(button)
+
+body = document.querySelector('body');
+body.addEventListener('click', (event) => {
+    if (!document.getElementById("stopProp").checked) {
+    alert('Check the Stop Propogation Box');
+    }})
+    
+    button.addEventListener('click', (event) => {
+        alert('The propogation no longer reaches the body element when the stop propogation box is checked');
+        if (document.getElementById("stopProp").checked) {
+            event.stopPropagation();
+        }
+    })
+
+TweenMax.to('.logo-heading' , 2, {x:650} )
+TweenMax.to('.logo-heading' , 2, {y:600, delay:3} )
+TweenMax.to('.logo-heading' , 2, {x:0, delay:6} )
+TweenMax.to('.logo-heading' , 2, {y:0, delay:9} )
